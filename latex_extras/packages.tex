@@ -1,0 +1,50 @@
+%These are the packages that we will use in our latex document. 
+
+\usepackage{graphicx}
+\usepackage{natbib}	%Bibliography package. It handles citations and can easily change formats. This is done at the end of the document
+\usepackage[utf8]{inputenx}% For proper input encoding
+\usepackage{adjustbox} %Handles resizing of tables, figures, etc. Based off of page and/or line width/height 
+% Packages for tables
+\usepackage{booktabs}% For Pretty tables
+\usepackage{threeparttable}% For Notes below table
+\usepackage{rotating}% To Rotate Table
+\usepackage{amsmath, amssymb,mathrsfs} %For using math
+\usepackage{bm}
+\usepackage{caption} 
+\usepackage[list=true]{subcaption} %For having multiple figures within the same one. Figure 1, with part (a) and (b)
+%\setcounter{lofdepth}{2}
+\usepackage{setspace} %Single, Double Space, etc 
+\usepackage[paperwidth=8.5in, paperheight=11in,margin=1in]{geometry} %For controlling the dimensions. Very useful for Posters, etc 
+\usepackage{chngpage} 
+\usepackage{everypage}%For page numbers on rotated pages
+\usepackage[capposition=top]{floatrow}
+\usepackage{accents}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{morefloats}
+\usepackage{placeins}% To Create Float Barriers so the tables will stay in their sections
+\usepackage{pdflscape}
+
+\usepackage{siunitx} %This aligns tables by their decimal and handles processing of the numbers within the tables
+  \sisetup{
+    detect-mode,
+    group-digits      = false,
+    input-symbols     = {( ) [ ] - +},
+    table-align-text-post = false,
+    input-signs             = ,
+    %parse-numbers=false,
+    %scientific-notation = true,
+        %round-mode              = places,
+        %round-precision         = 2,
+        %input-ignore={,},
+    %input-decimal-markers={.},
+    %group-separator={,},
+        } 
+\usepackage{grffile}
+\usepackage{soul}
+\usepackage{color}
+\usepackage{caption}
+%\captionsetup[figure]{justification=raggedright,singlelinecheck=off}
+\sisetup{separate-uncertainty=true}
+\usepackage{mathptmx}
+\DeclareCaptionLabelFormat{blank}{}

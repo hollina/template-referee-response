@@ -1,0 +1,202 @@
+% Based on work by Ivan Rudik, who based it on work by Petr Zemek https://blog.petrzemek.net/2016/07/17/latex-template-for-responses-to-referees-reports/
+
+\documentclass[11pt,leqno]{article}
+
+%------------------------------------------%
+%                Packages
+%------------------------------------------%
+ 
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{microtype,xparse,tcolorbox}
+\include{latex_extras/packages}
+
+%------------------------------------------%
+%              Custom Commands
+%------------------------------------------%
+\include{latex_extras/custom_commands}
+
+% Add an R in front of tables and figures
+\renewcommand{\thetable}{R\arabic{table}}
+\renewcommand{\thefigure}{R\arabic{figure}}
+
+%------------------------------------------%
+%      Matter Related to Table Creation
+%------------------------------------------%
+\include{latex_extras/dynamic_tables}
+
+
+%------------------------------------------%
+%      Title Page Info
+%------------------------------------------%
+\title{Replies for PAPER NUMBER:\\
+ ``TITLE''}
+\author{AUTHOR}
+\date{\today}
+\AtBeginDocument{\maketitle\thispagestyle{empty}\noindent}
+
+\begin{document}
+
+
+
+
+\onehalfspacing
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Summary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Summary of main changes 
+\begin{enumerate}
+  \item First thing     
+  
+  \item Second thing
+  
+  \item Third thing
+\end{enumerate}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Editor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Thank you for your helpful comments and guidance. We describe how we have addressed all of your concerns below. \\
+\\
+Your comments are below,  \fcolorbox{black}{black!10}{{\ttfamily boxed in with a gray background and different font}}. Our responses are in plain text. Any included text from the new manuscript is \fbox{boxed in with a white background and the} \\
+\fbox{same font as this text} with the page number noted at the top of the quoted text. 
+Any added comments or other differences from the quoted manuscript text and the text appearing in this report {\color{red} {\ttfamily[appears in brackets with a different font and a red color]}}. \\
+\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Editor 1: Short description of comment
+\subsection*{Editor: Comment 1} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Exact comment- copied and pasted
+\begin{tcolorbox}[left = 1em, top = 1ex, bottom = 1ex, colupper=black, colback=black!10, adjusted title = Editor: Comment 1]
+    \setlength\parindent{2em}
+	\noindent
+	\ttfamily
+	
+	WORD FOR WORD COPY AND PASTE OF COMMMENT
+\end{tcolorbox}
+
+% Response
+
+\paragraph{Short indicator of what the point is (e.g., Event study coefficients are hard to read)} Answer 
+
+\paragraph{Short indicator of what the point is (e.g., Event study should use -1 as reference category)} Answer 
+
+In response we have added the following text to the manuscript (beginning on \hl{page XX}).
+    
+% Text added to manuscript    
+	\begin{tcolorbox}[left = 1em, top = 1ex, bottom = 1ex, colupper=black, colback=white, adjusted title = From page \hl{XX}]
+    
+       EXACT TEXT FROM MANUSCRIPT
+    
+        \begin{align}
+            y_{it} = &~\beta X + \epsilon_{it} \notag
+        \end{align}
+        
+        We report amazing results in Figure~2. {\color{red} {\ttfamily[Figure~\ref{fig:simple_scatter} in this report.}} \\
+
+        {\color{red} {\ttfamily[text continued on next page]}} \\
+    \end{tcolorbox}    
+    
+    \newpage
+    \begin{tcolorbox}[left = 1em, top = 1ex, bottom = 1ex, colupper=black, colback=white, adjusted title = From page \hl{XX} (continued)]
+        {\color{red} {\ttfamily[continued from previous page]}}\\
+        
+        MORE WORDS
+        
+     
+    \end{tcolorbox}
+\FloatBarrier
+    % Scatter Plot 
+\begin{figure}[h]
+    \caption[Abbreviated Caption]{A really really really really really really really really really really really really really really really long figure caption to illustrate how you can make a shorter abbreviation in the table of contents.}
+      \centering
+      \includegraphics[width=\linewidth]{output/simple_scatter.pdf}
+
+        \subcaption*{\emph{Note:} A very important note.}   
+    \label{fig:simple_scatter}
+\end{figure}
+\FloatBarrier
+
+ \newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Referee 1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Thank you for your helpful comments and guidance. We describe how we have addressed all of your concerns below. \\
+\\
+Your comments are below,  \fcolorbox{black}{black!10}{{\ttfamily boxed in with a gray background and different font}}. Our responses are in plain text. Any included text from the new manuscript is \fbox{boxed in with a white background and the} \\
+\fbox{same font as this text} with the page number noted at the top of the quoted text. 
+Any added comments or other differences from the quoted manuscript text and the text appearing in this report {\color{red} {\ttfamily[appears in brackets with a different font and a red color]}}. \\
+\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Referee 1: Short description of comment
+\subsection*{Referee: Comment 1} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Exact comment- copied and pasted
+\begin{tcolorbox}[left = 1em, top = 1ex, bottom = 1ex, colupper=black, colback=black!10, adjusted title = Referee: Comment 1]
+    \setlength\parindent{2em}
+	\noindent
+	\ttfamily
+	
+	WORD FOR WORD COPY AND PASTE OF COMMMENT
+\end{tcolorbox}
+
+% Response
+
+\paragraph{Short indicator of what the point is (e.g., Event study coefficients are hard to read)} Answer 
+
+\paragraph{Short indicator of what the point is (e.g., Event study should use -1 as reference category)} Answer 
+
+In response we have added the following text to the manuscript (beginning on \hl{page XX}).
+    
+% Text added to manuscript    
+	\begin{tcolorbox}[left = 1em, top = 1ex, bottom = 1ex, colupper=black, colback=white, adjusted title = From page \hl{XX}]
+    
+       EXACT TEXT FROM MANUSCRIPT
+    
+        \begin{align}
+            y_{it} = &~\beta X + \epsilon_{it} \notag
+        \end{align}
+        
+        We report all coefficient estimates in Table~2. {\color{red} {\ttfamily[Table~\ref{tab:main_results}in this report.}} \\
+
+        {\color{red} {\ttfamily[text continued on next page]}} \\
+    \end{tcolorbox}    
+
+    \newpage    
+    \begin{tcolorbox}[left = 1em, top = 1ex, bottom = 1ex, colupper=black, colback=white, adjusted title = From page \hl{XX} (continued)]
+        {\color{red} {\ttfamily[continued from previous page]}}\\
+        
+        MORE WORDS
+        
+     
+    \end{tcolorbox}
+\FloatBarrier
+    \begin{table}[ht]\centering
+            \begin{adjustbox}{width=\textwidth}
+            \centering
+              \begin{threeparttable}
+                \caption{Regression Results}
+                \estauto{output/important_table}{5}{S[table-format=1.2,table-column-width=20mm]}
+                \label{tab:main_results}
+               % \Figtext{Some basic text about the table.}
+                \Fignote{* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01.  Standard errors in parentheses.}              %\Figsource{We good the data from here.}
+              % \Starnote
+              \end{threeparttable}
+             \end{adjustbox}
+        \end{table}
+\FloatBarrier
+
+\end{document}

@@ -1,0 +1,114 @@
+%This helps with custom automatic tables. It uses latex  functions
+%http://www.jwe.cc/2012/03/stata-latex-tables-estout/
+%http://repec.org/bocode/e/estout/estout.html
+
+% *****************************************************************
+% Estout related things
+% *****************************************************************
+\let\estinput=\input % define a new input command so that we can still flatten the document
+
+\newcommand{\estwide}[3]{
+    \vspace{.75ex}{
+      \textsymbols% Note the added command here
+      \begin{tabular*}
+      {\textwidth}{@{\hskip\tabcolsep\extracolsep\fill}l*{#2}{#3}}
+      \toprule
+      \estinput{#1}
+      \bottomrule
+      \addlinespace[.75ex]
+      \end{tabular*}
+      }
+    } 
+
+\newcommand{\estauto}[3]{
+    \vspace{.75ex}{
+      \textsymbols% Note the added command here
+      \begin{tabular}{l*{#2}{#3}}
+      \toprule
+      \estinput{#1}
+      \bottomrule
+      \addlinespace[.75ex]
+      \end{tabular}
+      }
+    }
+
+% Allow line breaks with \\ in specialcells
+\newcommand{\specialcell}[2][c]{%
+    \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}
+}
+\DeclareUnicodeCharacter{00A0}{ }
+% *****************************************************************
+% Custom subcaptions
+% *****************************************************************
+% Note/Source/Text after Tables
+% The new approach using threeparttables to generate notes that are the exact width of the table.
+\newcommand{\Figtext}[1]{%
+  \begin{tablenotes}[para,flushleft]
+  \hspace{6pt}
+  \hangindent=1.75em
+  #1
+  \end{tablenotes}
+  }
+\newcommand{\Fignote}[1]{\Figtext{\emph{Note:~}~#1}}
+\newcommand{\Figsource}[1]{\Figtext{\emph{Source:~}~#1}}
+\newcommand{\Starnote}{\Figtext{* p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01. Robust standard errors in parentheses.}}% Add significance note with \starnote
+% If you are using hyper-ref (recommended), this command must go after all 
+% other package inclusions (from the hyperref package documentation).
+% The purpose of hyperref is to make the PDF created extensively
+% cross-referenced.
+
+\newcommand{\sym}[1]{\rlap{#1}} %Allows for fancy stars in tables that also works in beamer
+
+% Create a function that works for the non-linear symbols
+\newcommand{\nlsym}[1]{\rlap{\append{}{*}{#1}}} %Allows for fancy stars in tables that also works in beamer
+
+% Character substitution that prints brackets and the minus symbol in text mode. Thanks to David Carlisle
+\def\yyy{%
+  \bgroup\uccode`\~\expandafter`\string-%
+  \uppercase{\egroup\edef~{\noexpand\text{\llap{\textendash}\relax}}}%
+  \mathcode\expandafter`\string-"8000 }
+
+\def\xxxl#1{%
+\bgroup\uccode`\~\expandafter`\string#1%
+\uppercase{\egroup\edef~{\noexpand\text{\noexpand\llap{\string#1}}}}%
+\mathcode\expandafter`\string#1"8000 }
+
+\def\xxxr#1{%
+\bgroup\uccode`\~\expandafter`\string#1%
+\uppercase{\egroup\edef~{\noexpand\text{\noexpand\rlap{\string#1}}}}%
+\mathcode\expandafter`\string#1"8000 }
+
+\def\textsymbols{\xxxl[\xxxr]\xxxl(\xxxr)\yyy}
+
+
+%Protects against odd minus sign errors within the tables
+\catcode`_11
+\protected\def \c__siunitx_minus_tl {$-$}
+\catcode`_ 8 
+
+%-----------Tables-------------%
+% This Section is needed to make the tables work with amsmath. But because of the \( being open and having no match, Sublime Text thinks that everything after it (all text) is in math mode and hence changes the text color. This annoys me so the only ``solution'' is to just place this preamble here. It seems to work still. 
+\makeatletter 
+\edef\originalbmathcode{%
+    \noexpand\mathchardef\noexpand\@tempa\the\mathcode`\(\relax} %\)
+
+\def\resetMathstrut@{%
+  \setbox\z@\hbox{%
+    \originalbmathcode
+
+    \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+    \expandafter\@tempb\meaning\@tempa \relax
+  }%
+  \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@
+}
+\makeatother %./tables.tex:25: LaTeX Error: Bad math environment delimiter. [\)]
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\append}{mmm}
+ {
+  #1\prg_replicate:nn{#3}{#2}
+ }
+\ExplSyntaxOff
+
+\doublespacing

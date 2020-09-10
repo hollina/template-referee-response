@@ -1,0 +1,29 @@
+%These are the custom commands that I use in the latex document
+
+\newcommand\iid{i.i.d.} %Makes iid a command
+\newcommand\pN{\mathcal{N}} %Makes the natural numbers a command
+
+
+\setcounter{MaxMatrixCols}{20}
+
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$ \\} %This fixes the problem with dynamic tables for some reason
+
+%For Page Numbers while rotated
+\newlength{\hfoot}
+\newlength{\vfoot}
+\AddEverypageHook{\ifdim\textwidth=\linewidth\relax
+\else\setlength{\hfoot}{-\topmargin}%
+\addtolength{\hfoot}{-\headheight}%
+\addtolength{\hfoot}{-\headsep}%
+\addtolength{\hfoot}{-.5\linewidth}%
+\ifodd\value{page}\setlength{\vfoot}{\oddsidemargin}%
+\else\setlength{\vfoot}{\evensidemargin}\fi%
+\addtolength{\vfoot}{\textheight}%
+\addtolength{\vfoot}{\footskip}%
+\raisebox{\hfoot}[0pt][0pt]{\rlap{\hspace{\vfoot}\rotatebox[origin=cB]{90}{\thepage}}}\fi}
+%http://tex.stackexchange.com/questions/209685/landscape-mode-and-page-numbering
